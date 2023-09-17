@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>The Element Object</h1>
+    <h2>The appendChild() Method</h2>
+
+<ul id="myList">
+  <li>Coffee</li>
+  <li>Tea</li>
+</ul>
+
+<p>Click "Append" to append an item to the end of the list:</p>
+
+<button onclick="myFunction()">Append</button>
+
+<input type="text" id="myText" value="Some text...">
+<p>
+<label for="setColor">Select the background color: </label>
+<select id="setColor">
+  <option value="">--Make a choice--</option>
+  <option value="red">Red</option>
+  <option value="beige">Beige</option>
+  <option value="lightblue">Light Blue</option>
+  <option value="white">white</option>
+</select>
+</p>
+
+<script>
+
+const select = document.querySelector("select");
+select.addEventListener("change", setColor);
+
+function setColor() {
+  const choice = select.value;
+
+  switch (choice) {
+    case "red":
+    document.body.style.backgroundColor = "red";
+      break;
+    case "beige":
+    document.body.style.backgroundColor = "beige";
+      break;
+    case "lightblue":
+    document.body.style.backgroundColor = "lightblue";
+      break;
+    case "white":
+    document.body.style.backgroundColor = "white";
+      default:
+    document.body.style.backgroundColor = "white";
+  }
+}
+
+
+function myFunction() {
+  // Create an "li" node:
+  const node = document.createElement("li");
+  // grab the text from the input textbox
+  const textstring = document.getElementById("myText").value;
+  //console.log(textstring);
+  // Create a text node:
+  const textnode = document.createTextNode(textstring);
+  //console.log(textnode);
+  // Append the text node to the "li" node:
+  node.appendChild(textnode);
+  // Append the "li" node to the list:
+  document.getElementById("myList").appendChild(node);
+  const liArray = document.body.getElementsByTagName('li');
+
+  for (const e of liArray) {
+      console.log(e.innerHTML);
+    }
+}
+</script>
+
+
+
+<!--<button onclick="myFunction()">Try it</button>-->
+
+
+</body>
+</html>
